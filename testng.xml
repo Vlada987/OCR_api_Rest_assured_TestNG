@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="OCRTestSuite" parallel="none" thread-count="1">
+
+
+	<listeners>
+		<listener class-name="tests.TestListenerLogger" />
+		<listener class-name="extentReporter.ExtentReportListener" />
+	</listeners>
+
+
+	<test name="Test1_authetification_test">
+		<classes>
+			<class name="tests.Ocr_api_test">
+				<methods>
+					<include name="auth_test" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Test2_service_test">
+		<classes>
+			<class name="tests.Ocr_api_test">
+				<methods>
+					<include name="service_test" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+
+	<test name="Test3_parallel_usage_of_service" parallel="methods"
+		thread-count="3">
+		<classes>
+			<class name="tests.Ocr_api_test">
+				<methods>
+					<include name="parallel_test" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
+
+
