@@ -13,7 +13,7 @@ The following scenarios are tested to ensure the proper functionality of the OCR
 - **Large Image File**: Ensuring that the OCR API rejects image files that exceed the maximum size limit (e.g., 1024 KB).
 - **Small Image File**: Testing that the OCR API handles small image files and processes them as expected.
 - **Unsupported File Format**: Verifying that the OCR API handles unsupported file formats correctly (e.g., text files or non-image files).
-- **Standard Image File**: Ensuring that the OCR API correctly processes and returns expected results for standard image files.
+- **Standard Image File multiple images at the same time**: Ensuring that the OCR API correctly processes and returns expected results for multiple image files in parallel mode.
 
 ---
 
