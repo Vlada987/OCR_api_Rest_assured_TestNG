@@ -3,7 +3,7 @@ package dataInterceptor;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class Predicates {
+public class Predicates { 
 	
 	public static Predicate<Object> getPredicate(String filterValue) {
 	    String filterLower = filterValue.toLowerCase();
