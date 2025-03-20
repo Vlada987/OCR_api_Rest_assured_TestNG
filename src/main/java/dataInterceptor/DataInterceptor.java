@@ -75,4 +75,4 @@ public class DataInterceptor implements IDataProviderInterceptor {
 		Spliterator<Object[]> split = Spliterators.spliteratorUnknownSize(originalIterator, Spliterator.ORDERED);
 		return StreamSupport.stream(split, false).filter(predicate).collect(Collectors.toList()).iterator();
 	}
-}
+}  
