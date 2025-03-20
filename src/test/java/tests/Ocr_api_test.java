@@ -12,12 +12,9 @@ import org.testng.annotations.Test;
 		extentReporter.ExtentReportListener.class })
 public class Ocr_api_test extends BaseTest {
 
-	
-	
 	@Test(priority = 0, dataProvider = "ocr_data_provider", dataProviderClass = DataProviders.class, attributes = {
-			@CustomAttribute(name = "test_type", values = { "authenticationfilter" }),
+			@CustomAttribute(name = "test_type", values = { "api_key_test" }),
 			@CustomAttribute(name = "data_editor", values = { "editor" }) })
-
 	public void auth_test(String testCaseId, String description, String testType, String expectedStatusCode,
 			String expectedResponseMessage, String apiKey, String imagePath) {
 
@@ -29,10 +26,8 @@ public class Ocr_api_test extends BaseTest {
 
 	}
 
-	
-	
 	@Test(priority = 1, dataProvider = "ocr_data_provider", dataProviderClass = DataProviders.class, attributes = {
-			@CustomAttribute(name = "test_type", values = { "servicefilter" }) })
+			@CustomAttribute(name = "test_type", values = { "service_test" }) })
 
 	public void service_test(String testCaseId, String description, String testType, String expectedStatusCode,
 			String expectedResponseMessage, String apiKey, String imagePath) {
@@ -45,11 +40,9 @@ public class Ocr_api_test extends BaseTest {
 
 	}
 
-	
-	
 	@Test(priority = 2, dataProvider = "ocr_data_provider", dataProviderClass = DataProviders.class, attributes = {
 			@CustomAttribute(name = "multiply_factor", values = { "3" }),
-			@CustomAttribute(name = "wanted_data", values = { "onlyvalid" }) })
+			@CustomAttribute(name = "test_type", values = { "parallel_test" }) })
 	public void parallel_test(String testCaseId, String description, String testType, String expectedStatusCode,
 			String expectedResponseMessage, String apiKey, String imagePath) {
 
