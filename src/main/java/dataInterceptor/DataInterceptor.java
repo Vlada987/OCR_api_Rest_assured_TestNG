@@ -25,17 +25,15 @@ public class DataInterceptor implements IDataProviderInterceptor {
 		Optional<String> multiplyFactor = extractAttributeValue(method, "multiply_factor");
 		Optional<String> testType = extractAttributeValue(method, "test_type");
 		Optional<String> dataEditor = extractAttributeValue(method, "data_editor");
-		Optional<String> wantedData = extractAttributeValue(method, "wanted_data");
 
-		if (wantedData.isPresent() && multiplyFactor.isPresent()) {
-			int factor = Integer.parseInt(multiplyFactor.get());
-			original = applyMultiplication(original, factor, wantedData.get());
-		}
 		if (dataEditor.isPresent()) {
 			original = applyDataEditing(original);
 		}
 		if (testType.isPresent()) {
 			original = applyFiltering(original, testType.get());
+		}
+		if (multiplyFactor.isPresent()) {
+			original = applyMultiplication(original, Integer.parseInt(multiplyFactor.get()));
 		}
 		return original;
 	}
@@ -45,17 +43,15 @@ public class DataInterceptor implements IDataProviderInterceptor {
 				.flatMap(it -> Arrays.stream(it.values())).findFirst();
 	}
 
-	private Iterator<Object[]> applyMultiplication(Iterator<Object[]> originalIterator, int factor,
-			String wantedDataCondition) {
-		Predicate<Object> predicate = Predicates.getPredicate(wantedDataCondition);
+	private Iterator<Object[]> applyMultiplication(Iterator<Object[]> originalIterator, int factor) {
+
 		List<Object[]> resultList = new LinkedList<>();
 
 		while (originalIterator.hasNext()) {
 			Object[] data = originalIterator.next();
-			if (predicate.test(data)) {
-				for (int i = 0; i < factor; i++) {
-					resultList.add(data);
-				}
+
+			for (int i = 0; i < factor; i++) {
+				resultList.add(data);
 			}
 		}
 		return resultList.iterator();
